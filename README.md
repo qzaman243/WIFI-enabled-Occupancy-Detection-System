@@ -1,42 +1,47 @@
-# Project Title
+# WiFi-Enabled Occupancy Detection System Using CSI
 
-One-sentence summary or tagline.
+This repository contains the complete implementation of my Final Year Project (FYP) titled **"WiFi-Enabled Occupancy Detection System Using Channel State Information (CSI)"**, conducted at the **National University of Sciences and Technology (NUST), Islamabad**. The project uses passive WiFi sensing for occupancy detection by analyzing fine-grained CSI data from a Raspberry Pi 4.
 
-## 🔧 Features
-- Feature 1
-- Feature 2
-- etc.
+---
 
-## 🚀 Installation
+## 📄 Abstract
 
-```bash
-git clone https://github.com/username/project-name.git
-cd project-name
-pip install -r requirements.txt
+This project explores a privacy-preserving and device-free approach to human occupancy detection using WiFi signals. Leveraging the **Broadcom BCM43455c0 chipset** on a **Raspberry Pi 4**, the system captures fine-grained Channel State Information (CSI) using the **Nexmon CSI toolchain**. Variations in CSI, induced by human motion or presence, are analyzed to determine occupancy status in indoor environments without the use of cameras or wearable devices.
 
+The CSI data is processed using signal enhancement techniques including **Discrete Wavelet Transform (DWT)** and **Kalman Filtering** to reduce noise and extract meaningful features. These features are then used to train machine learning models for accurate occupancy classification. Development was carried out using **Python** for data handling and machine learning, and **MATLAB** for signal analysis and visualization.
 
+This project demonstrates the viability of WiFi-based sensing as a low-cost, scalable, and non-invasive solution for smart environments, with applications in energy optimization, surveillance, and space utilization.
 
+---
 
+## 📁 Project Structure
 
-# WIFI-enabled-Occupancy-Detection-System
-Real Time Detection Using Channel State Information CSI of Occupant for smart Building
-**Abstract**
-Today's world is full of new innovative ideas in every field where the motive of every industry is to invent new ideas that can help society in every aspect. As our world consists of 8 billion population with the majority living in Buildings and we are heading towards to make the Buildings more efficient and more sustainable for humans. There has been extensive research on building energy saving (BES), which aims to reduce energy consumption inside buildings and make them energy efficient. There are several solutions for it and one approach is to make the devices energy efficient in terms of taking less computation power and consuming less electricity. One of the key solutions for energy saving in buildings is to reduce energy consumption in unoccupied areas where people are not present and still the appliances are running. For instance, we have lights and heating and cooling systems in rooms. And the other way is to use already existing appliance only when they needed. Mostly in buildings and homes devices are working although there is no person in that specified room or area. For this there are different solutions already exists that monitor the presence of person and now we come up with an idea that uses already existing Wi-Fi routers that almost exist every where in building or in homes . However, effective monitoring of occupants can be challenging due to unpredictable variations in indoor environments, such as space size, furniture arrangement, activity levels, and wall penetration losses. Existing occupancy monitoring solutions, including passive infrared PIR sensors, CO2 sensors, and cameras are expensive, require high maintenance, and struggle with environmental variations. This Document introduces WI-Sense, a WiFi-enabled occupancy detection system that utilizes Channel State Information (CSI) from commodity WiFi devices. We evaluated WI-Sense under various conditions, including multipath effects, varying activity intensities, and wall absorption in real-home scenarios.
-
-
-**Keywords:** Building energy saving (BES), Channel State Information (CSI), Access     Points (AP), Occupancy Monitoring, Multipath Effects, Activity of Daily Living 
-**Methodology:**
-
-WI-Sense processes CSI data through a feature extraction pipeline incorporating Discrete Wavelet Transform (DWT) for noise reduction, Principal Component Analysis (PCA) for feature selection, and a hybrid DBSCAN clustering and control hart technique for real-time detection.
-
-
-The data collection was conducted in three different rooms, categorized as small, medium, and large, to analyze occupancy variations in diverse environments. The small room had minimal furniture, while the medium and large rooms contained more obstacles, such as tables and chairs, affecting WiFi signal propagation. Each room was tested under different occupancy scenarios, including empty, single-person, and multiple-person presence. The variation in room sizes and layouts helped in capturing a wide range of CSI patterns for better model training. This setup ensured that the system could generalize well to different indoor spaces with varying interference.
-
-
-
-**Data Snitization:**
-Raspberry Pi 4B equipped with a WiFi module bcm4345c0 to capture Channel State Information (CSI) packets. The data is collected at a frequency of 2.4 GHz with a 20 MHz bandwidth, ensuring consistent CSI extraction. Using Nexmon firmware, packets are captured in raw format and stored in .pcap files for further analysis. The experiments are conducted in controlled indoor environments with varying occupancy conditions to create a diverse dataset. Each CSI packet consists of 274 bytes of amplitude information, which is later processed for feature extraction.
-Captured packets CSI data contains number of subcarriers depends on the channel bandwidth. Specifically, for a 20 MHz bandwidth, there are 64 subcarriers, while 40 MHz, 80 MHz, and 160 MHz bandwidths have 114, 242, and 484 subcarriers, respectively. These subcarriers are categorized into three types: pilot subcarriers, which monitor variations in frequency, amplitude, and phase; data subcarriers, which carry modulated data; and DC/null subcarriers, which act as guard carriers to prevent interference with neighboring channels. In the 802.11n/ac standard for a 20 MHz bandwidth, 52 subcarriers are used for data, 8 are pilot subcarriers, and 4 are DC/null subcarriers. The pilot subcarriers are located at indices -28, -21, -14, -7, 7, 14, 21, and 28, while DC/null subcarriers occupy indices -2 to 2. These subcarriers introduce errors in occupancy detection because pilot subcarriers create a spiky pattern, and DC subcarriers generate zero bins. To enhance the accuracy of CSI-based occupancy detection, only data subcarriers should be retained by discarding both pilot subcarriers and DC/null subcarriers based on their indices.
+```text
+wifi-occupancy-csi/
+│
+├── data/                  # Raw and preprocessed CSI files (PCAP/CSV)
+├── scripts/
+│   ├── extract_csi.py     # Script to convert PCAP files to CSV
+│   ├── preprocess.py      # DWT, Kalman filtering, denoising
+│   ├── features.py        # Feature extraction from CSI
+│   └── train_model.py     # Training ML classifier
+│
+├── matlab/                # MATLAB signal analysis files
+├── models/                # Saved models (.pkl, .h5, etc.)
+├── utils/                 # Helper functions and tools
+├── tests/                 # Unit tests
+│
+├── requirements.txt       # Python dependencies
+├── README.md              # This file
+├── .gitignore             # Files to ignore in version control
+└── LICENSE                # Open-source license
 
 
-Data 
+---
+**
+# Create Python Virtual Environment (Optional)**
+bash
+Copy
+Edit
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
