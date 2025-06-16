@@ -1,6 +1,26 @@
+# Project Title
+
+One-sentence summary or tagline.
+
+## 🔧 Features
+- Feature 1
+- Feature 2
+- etc.
+
+## 🚀 Installation
+
+```bash
+git clone https://github.com/username/project-name.git
+cd project-name
+pip install -r requirements.txt
+
+
+
+
+
 # WIFI-enabled-Occupancy-Detection-System
 Real Time Detection Using Channel State Information CSI of Occupant for smart Building
-Abstract
+**Abstract**
 Today's world is full of new innovative ideas in every field where the motive of every industry is to invent new ideas that can help society in every aspect. As our world consists of 8 billion population with the majority living in Buildings and we are heading towards to make the Buildings more efficient and more sustainable for humans. There has been extensive research on building energy saving (BES), which aims to reduce energy consumption inside buildings and make them energy efficient. There are several solutions for it and one approach is to make the devices energy efficient in terms of taking less computation power and consuming less electricity. One of the key solutions for energy saving in buildings is to reduce energy consumption in unoccupied areas where people are not present and still the appliances are running. For instance, we have lights and heating and cooling systems in rooms. And the other way is to use already existing appliance only when they needed. Mostly in buildings and homes devices are working although there is no person in that specified room or area. For this there are different solutions already exists that monitor the presence of person and now we come up with an idea that uses already existing Wi-Fi routers that almost exist every where in building or in homes . However, effective monitoring of occupants can be challenging due to unpredictable variations in indoor environments, such as space size, furniture arrangement, activity levels, and wall penetration losses. Existing occupancy monitoring solutions, including passive infrared PIR sensors, CO2 sensors, and cameras are expensive, require high maintenance, and struggle with environmental variations. This Document introduces WI-Sense, a WiFi-enabled occupancy detection system that utilizes Channel State Information (CSI) from commodity WiFi devices. We evaluated WI-Sense under various conditions, including multipath effects, varying activity intensities, and wall absorption in real-home scenarios.
 
 
